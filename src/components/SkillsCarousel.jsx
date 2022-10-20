@@ -1,30 +1,26 @@
-import React, { forwardRef } from "react";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+/* @refresh reload */
+import { aos } from "../utils/helpers";
+function SkillsCarousel(props) {
 
-function SkillsCarousel({ skill, changeSkill }, ref) {
   return (
-    <AnimationOnScroll
+    <div
       className="skills__carousel"
-      animateIn="slide-in-right"
-      duration={1}
-      offset={200}
-      delay={500}
-      animateOnce={true}
+      use:aos={{name: "slide-in-right", duration: 1, offset: 200, once: true}}
     >
       <button
         className="skills__carousel__left"
-        onClick={() => changeSkill(-1, skill)}
+        onClick={() => props.changeSkill(-1, props.skill)}
       >
         {"<"}
       </button>
       <div className="skills__carousel__card__container">
-        <div ref={ref} className="icon-full fade--in" id={skill.id}>
+        <div ref={props.ref} className="icon-full fade--in" id={props.skill.id}>
           <div className="icon-img">
-            <img src={skill.src} alt={skill.id} />
+            <img src={props.skill.src} alt={props.skill.id} />
           </div>
           <div className="icon-main">
-            <h3 className="skills__card__title"> {skill.title} </h3>
-            <p className="skills__card__desc">{skill.desc}</p>
+            <h3 className="skills__card__title"> {props.skill.title} </h3>
+            <p className="skills__card__desc">{props.skill.desc}</p>
             <a className="view__projects__button" href="#projects">
               view projects<span>🡣</span>
             </a>
@@ -33,12 +29,12 @@ function SkillsCarousel({ skill, changeSkill }, ref) {
       </div>
       <button
         className="skills__carousel__right"
-        onClick={() => changeSkill(1, skill)}
+        onClick={() => props.changeSkill(1, props.skill)}
       >
         {">"}
       </button>
-    </AnimationOnScroll>
+    </div>
   );
 }
 
-export default forwardRef(SkillsCarousel);
+export default SkillsCarousel;

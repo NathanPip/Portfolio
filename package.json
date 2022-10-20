@@ -15,6 +15,7 @@
     "vite-plugin-solid": "^2.3.0"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.4.0",
     "solid-js": "^1.5.1"
   }
 }

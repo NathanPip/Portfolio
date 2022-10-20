@@ -1,11 +1,11 @@
 import Header from "./Components/Header";
-// import Main from "./Components/Main";
+import Main from "./Components/Main";
 
 function App() {
   return (
     <div className="wrapper">
       <Header />
-      {/* <Main /> */}
+      <Main />
     </div>
   );
 }

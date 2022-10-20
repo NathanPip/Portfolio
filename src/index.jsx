@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
 import './styles/css/normalize.css';
-import './styles/scss/main.scss';
+import './styles/sass/main.scss';
 
 import App from './App';
 

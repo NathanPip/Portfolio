@@ -1,14 +1,13 @@
-import React, { useState, useRef } from "react";
-import { AnimationOnScroll } from "react-animation-on-scroll";
 import emailjs from "@emailjs/browser";
+import { createSignal } from "solid-js";
+import { aos } from "../utils/helpers";
 
 function Contact() {
-  const [submitStatus, setSubmitStatus] = useState(false);
-  const form = useRef();
+  const [submitStatus, setSubmitStatus] = createSignal(false);
+  let form;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
     const elements = {
       name: e.target.name,
       email: e.target.email,
@@ -39,22 +38,15 @@ function Contact() {
   };
 
   return (
-    <AnimationOnScroll
+    <div
       className="contact"
-      animateIn="fade-in"
-      duration={0.5}
-      offset={200}
-      animateOnce={true}
+      use:aos={{name: "fade-in", duration: .5, offset: 200, once: true}}
       >
       <h2 id="contact" className="contact-form-title">Contact</h2>
       <div className="contact-body">
-        <AnimationOnScroll
+        <div
           className="contact-aside"
-          animateIn="slide-in-left"
-          duration={1}
-          offset={200}
-          delay={500}
-          animateOnce={true}
+          use:aos={{name: "slide-in-left", duration: 1, offset: 200, once: true}}
         >
           <p>Get in touch!</p>
           <p>
@@ -86,14 +78,10 @@ function Contact() {
             />{" "}
             <a href="tel:7075099345">1 (707) 509-9345</a>
           </p>
-        </AnimationOnScroll>
-        <AnimationOnScroll
+        </div>
+        <div
           className="contact-form-container"
-          animateIn="slide-in-right"
-          duration={1}
-          offset={200}
-          delay={500}
-          animateOnce={true}
+          use:aos={{name: "slide-in-right", duration: 1, offset: 200, once: true}}
         >
           <form ref={form} className="contact-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name: </label>
@@ -105,11 +93,11 @@ function Contact() {
             <label htmlFor="message">Message: </label>
             <textarea id="message" name="message" required></textarea>
 
-            <button type="submit">{submitStatus ? "Sent!" : "Submit"}</button>
+            <button type="submit">{submitStatus() ? "Sent!" : "Submit"}</button>
           </form>
-        </AnimationOnScroll>
+        </div>
       </div>
-    </AnimationOnScroll>
+    </div>
   );
 }
 

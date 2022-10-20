@@ -1,17 +1,14 @@
-import React, {useState} from "react";
-
-function SkillsIcon({ skill, changeSkill, currentSkill, skills }) {
-
-  const [skillIndex] = useState(skills.indexOf(skill))
+function SkillsIcon(props) {
+  const skillIndex = props.skills.indexOf(props.skill);
 
   return (
     <div
       className={`skills__icon`}
-      id={skill.id}
-      onClick={()=>changeSkill(skillIndex - skills.indexOf(currentSkill), currentSkill)}
+      id={props.skill.id}
+      onClick={()=>props.changeSkill(skillIndex - props.skills.indexOf(props.currentSkill), props.currentSkill)}
     >
-    <img className="skills__icon__img" src={skill.src} alt={skill.id} />
-    <p className="skills__icon__title">{skill.title}</p>
+    <img className="skills__icon__img" src={props.skill.src} alt={props.skill.id} />
+    <p className="skills__icon__title">{props.skill.title}</p>
     </div>
   );
 }

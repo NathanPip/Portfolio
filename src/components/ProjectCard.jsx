@@ -1,14 +1,13 @@
-import React from "react";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+import { For } from "solid-js";
+import { aos } from "../utils/helpers";
 
-function ProjectCard({ project }) {
+function ProjectCard(props) {
+  const project = props.project;
+
   return (
-    <AnimationOnScroll
-      animateIn="fade-in"
-      duration={1}
-      offset={200}
+    <div
       className="project-card"
-      animateOnce={true}
+      use:aos={{ name: "fade-in", duration: 1, offset: 200, once: true }}
     >
       <h3 className="project-title">{project.title}</h3>
       <div className="project-head">
@@ -20,17 +19,17 @@ function ProjectCard({ project }) {
           />
         </a>
         <ul className="project-skills">
-          {project.skills.map((skill) => (
-            <li key={skill} className="project-skills-item">
-              {skill}
-            </li>
-          ))}
+          <For each={project.skills} fallback={<></>}>
+            {(skill) => {
+              <li key={skill} className="project-skills-item">
+                {skill}
+              </li>;
+            }}
+          </For>
         </ul>
       </div>
       <div className="project-body">
-        {project.alert ? (
-          <p className="project-alert">{project.alert}</p>
-        ) : null}
+        {project.alert ? <p className="project-alert">{project.alert}</p> : null}
         {project.demo ? <p className="project-alert">{project.demo}</p> : null}
         <p className="project-desc">{project.desc}</p>
         <div className="project-buttons">
@@ -46,7 +45,7 @@ function ProjectCard({ project }) {
           ) : null}
         </div>
       </div>
-    </AnimationOnScroll>
+    </div>
   );
 }
 
