@@ -1,0 +1,104 @@
+@use "../Utils" as *;
+
+.skills {
+  font-size: 0.65em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  background-color: $text-color;
+  color: $background-color;
+  padding: 0 5% 0;
+  &.fade-in {
+    animation: fade-in .5s ease-in;
+  }
+  .full-skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  .skills-container {
+    flex: 1;
+    min-width: 250px;
+    max-width: 100%;
+    padding: 1em;
+    border-radius: 0.25em;
+    box-shadow: 0px 0px 7px inset $background-color;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1em;
+    &.slide-in-left {
+      animation: slide-in-left 1s cubic-bezier(0.21, 1.1, 0.72, 1.1);
+    }
+  }
+  .skills__carousel {
+    flex: 2;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5em 0;
+    margin-left: auto;
+    .skills__carousel__left,
+    .skills__carousel__right {
+      background: transparent;
+      border: none;
+      color: $background-color;
+      font-size: 1.75em;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .icon-full {
+      margin: 0 auto;
+    }
+    &.slide-in-right {
+      animation: slide-in-right 1s cubic-bezier(0.21, 1.1, 0.72, 1.1);
+    }
+  }
+  @include breakpoint($small) {
+    font-size: 0.75em;
+  }
+  @include breakpoint($medium) {
+    font-size: 0.8em;
+  }
+  @include breakpoint($large) {
+    font-size: 0.9em;
+  }
+  @include breakpoint($extra-large) {
+    font-size: 1.1em;
+  }
+}
+#html {
+  @include icon-full-color($html-color);
+}
+#css {
+  @include icon-full-color($css-color);
+}
+#js {
+  @include icon-full-color($js-color);
+}
+#react {
+  @include icon-full-color($react-color);
+}
+#sass {
+  @include icon-full-color($sass-color);
+}
+#node {
+  @include icon-full-color($node-color);
+}
+#express {
+  @include icon-full-color($express-color);
+}
+#git {
+  @include icon-full-color($git-color);
+}
+#jira {
+  @include icon-full-color($jira-color);
+}
+#sql {
+  @include icon-full-color($sql-color);
+}

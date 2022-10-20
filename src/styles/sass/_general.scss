@@ -1,0 +1,51 @@
+@use "./Utils" as *;
+
+
+* {
+    box-sizing: border-box;
+    
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    background-color: $text-color;
+    color: $background-color;
+    h2 {
+        margin: .5em 0;
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+    @include breakpoint($medium) {
+        h2 {
+            font-size: 2em;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#root {
+    width: 100%;
+    max-width: 2200px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    overflow: hidden;
+}
+
+#socials, #skills, #contact, #projects {
+    padding-top: 2em;
+}
+
+.hide {
+    display: none;
+}

@@ -1,0 +1,33 @@
+@use "./variables";
+
+@mixin icon-full-color($color) {
+  .icon-img {
+    background-color: $color;
+  }
+  &.icon-full:hover {
+    box-shadow: 0px 10px 20px $color;
+    transform: translateY(-2.5%);
+  }
+  &.skills__icon:hover {
+    box-shadow: 0px 0px 10px $color;
+    transform: translateY(-5%);
+    cursor: pointer;
+  }
+  &.skills__icon {
+    background-color: $color;
+  }
+}
+
+@mixin breakpoint($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin cardSize($size) {
+  font-size: $size;
+  width: calc($size*20);
+  height: calc(1.4 * ($size*20));
+  max-width: 90%;
+  max-height: 90%;
+}
