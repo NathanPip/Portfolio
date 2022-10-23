@@ -42,7 +42,7 @@ function Skills(props) {
       <div className="full-skills-container">
         <div
           className="skills-container"
-          use:aos={{ name: "slide-in-left", duration: 1, offset: 200, once: true }}
+          use:aos={{ name: "slide-in-left", duration: 1, delay: 200, offset: 200, once: true }}
         >
           <For each={skills} fallback={<></>}>
             {(skill) => 

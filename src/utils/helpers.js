@@ -1,4 +1,4 @@
-import { createEffect } from "solid-js";
+import { onMount } from "solid-js";
 
 export const stringContains = (string, wordArray) => {
   for (let word of wordArray) {
@@ -10,7 +10,7 @@ export const stringContains = (string, wordArray) => {
 };
 
 export const aos = (el, value) => {
-  createEffect(() => {
+  onMount(() => {
     let { name, duration, offset, once } = value();
     let pos = el.getBoundingClientRect().top + offset;
 
@@ -19,10 +19,13 @@ export const aos = (el, value) => {
         window.scrollY + window.innerHeight > pos &&
         !el.classList.contains(name)
       ) {
-        el.classList.add(name);
         if (once) {
           el.style.animationFillMode = "forwards";
         }
+        if(duration) {
+          el.style.animationDuration = duration;
+        }
+        el.classList.add(name);
         console.log(window.scrollY + window.innerHeight + " " + pos);
       }
     });

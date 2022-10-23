@@ -1,11 +1,10 @@
-/* @refresh reload */
 import { aos } from "../utils/helpers";
 function SkillsCarousel(props) {
 
   return (
     <div
       className="skills__carousel"
-      use:aos={{name: "slide-in-right", duration: 1, offset: 200, once: true}}
+      use:aos={{name: "slide-in-right", duration: 1, delay: 200, offset: 400, once: true}}
     >
       <button
         className="skills__carousel__left"

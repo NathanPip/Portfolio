@@ -46,7 +46,7 @@ function Contact() {
       <div className="contact-body">
         <div
           className="contact-aside"
-          use:aos={{name: "slide-in-left", duration: 1, offset: 200, once: true}}
+          use:aos={{name: "slide-in-left", duration: 1, delay: 200, offset: 200, once: true}}
         >
           <p>Get in touch!</p>
           <p>
@@ -81,7 +81,7 @@ function Contact() {
         </div>
         <div
           className="contact-form-container"
-          use:aos={{name: "slide-in-right", duration: 1, offset: 200, once: true}}
+          use:aos={{name: "slide-in-right", duration: 1, delay: 200, offset: 200, once: true}}
         >
           <form ref={form} className="contact-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name: </label>

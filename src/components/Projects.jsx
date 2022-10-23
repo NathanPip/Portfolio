@@ -5,17 +5,16 @@ import { aos } from "../utils/helpers";
 const Projects = (props) => {
   
   const buttons = ["Featured", "Client Work", "Cool Projects", "All"];
-  const projects = props.projects;
   const [selectedButton, setSelectedButton] = createSignal(0);
   const [currentFilter, setCurrentFilter] = createSignal("Featured");
 
   const displayProjects = (filter) => {
     let displayed = [];
-    projects.forEach((project) => {
+    props.projects.forEach((project) => {
       if (project.skills.includes(filter) || project.filter.includes(filter))
         displayed.push(project);
     });
-    if (displayed.length === 0) displayed = projects;
+    if (displayed.length === 0) displayed = props.projects;
     return displayed;
   };
 
@@ -36,10 +35,9 @@ const Projects = (props) => {
           {(button, index) => (
             <button
               className={
-                index === selectedButton() ? "filter-button active" : "filter-button"
+                index() === selectedButton() ? "filter-button active" : "filter-button"
               }
-              key={index.toString()}
-              onClick={() => handleOnClick(index, button)}
+              onClick={() => handleOnClick(index(), button)}
             >
               {button}
             </button>
