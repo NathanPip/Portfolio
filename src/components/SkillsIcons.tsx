@@ -1,4 +1,12 @@
-function SkillsIcon(props) {
+import { Component } from "solid-js";
+import { skill } from "../DATA";
+
+const SkillsIcon: Component<{
+  skill: skill 
+  changeSkill: Function,
+  currentSkill: skill,
+  skills: Array<skill>
+}> = (props) => {
   const skillIndex = props.skills.indexOf(props.skill);
 
   return (

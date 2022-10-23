@@ -5,4 +5,6 @@ import './styles/sass/main.scss';
 
 import App from './App';
 
-render(() => <App />, document.getElementById('root'));
+render(() => <App />, document.getElementById('root') as HTMLElement);
+
+

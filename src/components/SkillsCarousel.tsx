@@ -1,10 +1,24 @@
+import { Component } from "solid-js";
+import { skill } from "../DATA";
 import { aos } from "../utils/helpers";
-function SkillsCarousel(props) {
+const SkillsCarousel: Component<{
+  skill: skill,
+  changeSkill: Function,
+  ref: HTMLElement
+}> = (props) => {
+
+  const AOS = aos;
 
   return (
     <div
       className="skills__carousel"
-      use:aos={{name: "slide-in-right", duration: 1, delay: 200, offset: 400, once: true}}
+      use:AOS={{
+        name: "slide-in-right",
+        duration: 1,
+        delay: 200,
+        offset: 400,
+        once: true,
+      }}
     >
       <button
         className="skills__carousel__left"
@@ -34,6 +48,6 @@ function SkillsCarousel(props) {
       </button>
     </div>
   );
-}
+};
 
 export default SkillsCarousel;

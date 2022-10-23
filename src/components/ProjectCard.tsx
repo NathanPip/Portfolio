@@ -4,10 +4,12 @@ import { aos } from "../utils/helpers";
 
 const ProjectCard: Component<{project: project}> = (props) => {
 
+  const AOS = aos;
+
   return (
     <div
       className="project-card"
-      use:aos={{ name: "fade-in", duration: 1, offset: 200, once: true }}
+      use:AOS={{ name: "fade-in", duration: 1, offset: 200, once: true }}
     >
       <h3 className="project-title">{props.project.title}</h3>
       <div className="project-head">

@@ -10,6 +10,8 @@ const Skills: Component<{ skills: Array<skill> }> = (props) => {
   const skills = props.skills;
   const animationDuration = 500;
 
+  const AOS = aos;
+
   const [currentSkill, setCurrentSkill] = createSignal(skills[0]);
 
   createEffect(() => {
@@ -35,7 +37,7 @@ const Skills: Component<{ skills: Array<skill> }> = (props) => {
   return (
     <div
       className="skills"
-      use:aos={{ name: "fade-in", duration: 0.5, offset: 200, once: true }}
+      use:AOS={{ name: "fade-in", duration: 0.5, offset: 200, once: true }}
     >
       <h2 id="skills" className="skills-title">
         Skills
@@ -43,7 +45,7 @@ const Skills: Component<{ skills: Array<skill> }> = (props) => {
       <div className="full-skills-container">
         <div
           className="skills-container"
-          use:aos={{
+          use:AOS={{
             name: "slide-in-left",
             duration: 1,
             delay: 200,
@@ -54,7 +56,6 @@ const Skills: Component<{ skills: Array<skill> }> = (props) => {
           <For each={skills} fallback={<></>}>
             {(skill) => (
               <SkillsIcon
-                key={skill.id}
                 skill={skill}
                 changeSkill={changeSkill}
                 currentSkill={currentSkill()}

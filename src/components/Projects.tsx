@@ -1,9 +1,11 @@
 import { Component, createSignal, For } from "solid-js";
 import ProjectCard from "./ProjectCard";
-import { aos } from "../utils/helpers";
 import { project } from "../DATA";
+import { aos } from "../utils/helpers";
 
 const Projects: Component<{projects: Array<project>}> = (props) => {
+
+  const AOS = aos;
   
   const buttons = ["Featured", "Client Work", "Cool Projects", "All"];
   const [selectedButton, setSelectedButton] = createSignal(0);
@@ -32,7 +34,7 @@ const Projects: Component<{projects: Array<project>}> = (props) => {
   return (
     <div
       className="projects"
-      use:aos={{name: "fade-in", duration: .5, offset: 200, once: true}}
+      use:AOS={{name: "fade-in", duration: .5, offset: 200, once: true}}
     >
       <div id="projects" className="projects-header-container">
         <h2 className="projects-title">Projects</h2>

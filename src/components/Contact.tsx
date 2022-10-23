@@ -7,6 +7,8 @@ const Contact: Component = () => {
   const [submitStatus, setSubmitStatus] = createSignal(false);
   let form: HTMLFormElement;
 
+  const AOS = aos;
+
   const handleSubmit = (e: Event) => {
     e.preventDefault();
     if(e.target === null) {return}
@@ -41,13 +43,13 @@ const Contact: Component = () => {
   return (
     <div
       className="contact"
-      use:aos={{name: "fade-in", duration: .5, offset: 200, once: true}}
+      use:AOS={{name: "fade-in", duration: .5, offset: 200, once: true}}
       >
       <h2 id="contact" className="contact-form-title">Contact</h2>
       <div className="contact-body">
         <div
           className="contact-aside"
-          use:aos={{name: "slide-in-left", duration: 1, delay: 200, offset: 200, once: true}}
+          use:AOS={{name: "slide-in-left", duration: 1, delay: 200, offset: 200, once: true}}
         >
           <p>Get in touch!</p>
           <p>
@@ -82,7 +84,7 @@ const Contact: Component = () => {
         </div>
         <div
           className="contact-form-container"
-          use:aos={{name: "slide-in-right", duration: 1, delay: 200, offset: 200, once: true}}
+          use:AOS={{name: "slide-in-right", duration: 1, delay: 200, offset: 200, once: true}}
         >
           <form ref={form} className="contact-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name: </label>
