@@ -1,6 +1,6 @@
-import { createEffect, createSignal } from "solid-js";
+import { Component, createEffect, createSignal } from "solid-js";
 
-const Header = () => {
+const Header: Component = () => {
   const [scroll, setScroll] = createSignal(window.scrollY);
 
   createEffect(() => {

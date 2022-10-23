@@ -1,11 +1,12 @@
 /* @refresh reload */
 import SkillsIcon from "./SkillsIcons";
 import SkillsCarousel from "./SkillsCarousel";
-import { createEffect, createSignal, For } from "solid-js";
+import { Component, createEffect, createSignal, For } from "solid-js";
 import { aos } from "../utils/helpers";
+import { skill } from "../DATA";
 
-function Skills(props) {
-  let cardRef;
+const Skills: Component<{ skills: Array<skill> }> = (props) => {
+  let cardRef: HTMLElement;
   const skills = props.skills;
   const animationDuration = 500;
 
@@ -18,7 +19,7 @@ function Skills(props) {
     return () => clearInterval(rotationTimer);
   });
 
-  const changeSkill = async (delta, skill) => {
+  const changeSkill = async (delta: number, skill: skill) => {
     const index =
       (((skills.indexOf(skill) + delta) % skills.length) + skills.length) %
       skills.length;
@@ -42,10 +43,16 @@ function Skills(props) {
       <div className="full-skills-container">
         <div
           className="skills-container"
-          use:aos={{ name: "slide-in-left", duration: 1, delay: 200, offset: 200, once: true }}
+          use:aos={{
+            name: "slide-in-left",
+            duration: 1,
+            delay: 200,
+            offset: 200,
+            once: true,
+          }}
         >
           <For each={skills} fallback={<></>}>
-            {(skill) => 
+            {(skill) => (
               <SkillsIcon
                 key={skill.id}
                 skill={skill}
@@ -53,7 +60,7 @@ function Skills(props) {
                 currentSkill={currentSkill()}
                 skills={skills}
               />
-            }
+            )}
           </For>
         </div>
         <SkillsCarousel
@@ -64,6 +71,6 @@ function Skills(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Skills;

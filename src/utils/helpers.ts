@@ -1,6 +1,6 @@
 import { onMount } from "solid-js";
 
-export const stringContains = (string, wordArray) => {
+export const stringContains = (string: string, wordArray: Array<string>) => {
   for (let word of wordArray) {
     if (string.includes(word)) {
       return true;
@@ -9,7 +9,7 @@ export const stringContains = (string, wordArray) => {
   return false;
 };
 
-export const aos = (el, value) => {
+export const aos = (el: HTMLElement, value: any) => {
   onMount(() => {
     let { name, duration, offset, once } = value();
     let pos = el.getBoundingClientRect().top + offset;

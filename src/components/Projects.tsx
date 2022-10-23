@@ -1,24 +1,30 @@
-import { createSignal, For } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import ProjectCard from "./ProjectCard";
 import { aos } from "../utils/helpers";
+import { project } from "../DATA";
 
-const Projects = (props) => {
+const Projects: Component<{projects: Array<project>}> = (props) => {
   
   const buttons = ["Featured", "Client Work", "Cool Projects", "All"];
   const [selectedButton, setSelectedButton] = createSignal(0);
   const [currentFilter, setCurrentFilter] = createSignal("Featured");
 
-  const displayProjects = (filter) => {
-    let displayed = [];
-    props.projects.forEach((project) => {
-      if (project.skills.includes(filter) || project.filter.includes(filter))
+  const displayProjects = (filter: string) => {
+    let displayed: Array<project> = [];
+    for(let project of props.projects) {
+      if (project.skills.includes(filter)){
         displayed.push(project);
-    });
+        continue;
+      }
+      if(project.filter && project.filter.includes(filter)) {
+        displayed.push(project);
+      }
+    }
     if (displayed.length === 0) displayed = props.projects;
     return displayed;
   };
 
-  const handleOnClick = (index, filter) => {
+  const handleOnClick = (index: number, filter: string) => {
     setSelectedButton(index);
     setCurrentFilter(filter);
   };

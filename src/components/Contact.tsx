@@ -1,32 +1,33 @@
 import emailjs from "@emailjs/browser";
-import { createSignal } from "solid-js";
+import { Component, createSignal } from "solid-js";
+// @ts-ignore
 import { aos } from "../utils/helpers";
 
-function Contact() {
+const Contact: Component = () => {
   const [submitStatus, setSubmitStatus] = createSignal(false);
-  let form;
+  let form: HTMLFormElement;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: Event) => {
     e.preventDefault();
+    if(e.target === null) {return}
+    const target = e.target as HTMLFormElement;
+
     const elements = {
-      name: e.target.name,
-      email: e.target.email,
-      message: e.target.message,
+      name: target.name,
+      email: target.email,
+      message: target.message,
     };
     if (!submitStatus) {
       emailjs
         .sendForm(
           "service_gmld2ys",
           "template_nr3gwiz",
-          form.current,
+          form,
           "user_lXjYwTQ6tLx48Qt9b27XP"
         )
         .then(
           (result) => {
             console.log(result.text);
-            for (let element in elements) {
-              elements[element].value = null;
-            }
             setSubmitStatus(true);
           },
           (error) => {
