@@ -14,8 +14,9 @@ const SkillsIcon: Component<{
       className={`skills__icon`}
       id={props.skill.id}
       onClick={()=>props.changeSkill(skillIndex - props.skills.indexOf(props.currentSkill), props.currentSkill)}
+      style={{"background-color": props.skill.color}}
     >
-    <img className="skills__icon__img" src={props.skill.src} alt={props.skill.id} />
+    <img className="skills__icon__img" src={props.skill.src} alt={props.skill.id} style={{"background-color": props.skill.color}} />
     <p className="skills__icon__title">{props.skill.title}</p>
     </div>
   );

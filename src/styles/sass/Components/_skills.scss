@@ -72,33 +72,3 @@
     font-size: 1.1em;
   }
 }
-#html {
-  @include icon-full-color($html-color);
-}
-#css {
-  @include icon-full-color($css-color);
-}
-#js {
-  @include icon-full-color($js-color);
-}
-#react {
-  @include icon-full-color($react-color);
-}
-#sass {
-  @include icon-full-color($sass-color);
-}
-#node {
-  @include icon-full-color($node-color);
-}
-#express {
-  @include icon-full-color($express-color);
-}
-#git {
-  @include icon-full-color($git-color);
-}
-#jira {
-  @include icon-full-color($jira-color);
-}
-#sql {
-  @include icon-full-color($sql-color);
-}

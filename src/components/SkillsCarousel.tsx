@@ -28,7 +28,7 @@ const SkillsCarousel: Component<{
       </button>
       <div className="skills__carousel__card__container">
         <div ref={props.ref} className="icon-full fade--in" id={props.skill.id}>
-          <div className="icon-img">
+          <div className="icon-img" style={{"background-color": props.skill.color}}>
             <img src={props.skill.src} alt={props.skill.id} />
           </div>
           <div className="icon-main">
