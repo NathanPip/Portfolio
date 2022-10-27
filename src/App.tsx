@@ -1,11 +1,11 @@
 import { Component } from "solid-js";
-import Header from "./Components/Header";
-import Main from "./Components/Main";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 
 const App: Component = () => {
   return (
-    <div className="wrapper">
+    <div class="wrapper">
       <Header />
       <Main />
     </div>

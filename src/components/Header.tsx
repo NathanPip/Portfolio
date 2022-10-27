@@ -1,4 +1,3 @@
-/* @refresh reload */
 import { Component, createEffect, createSignal } from "solid-js";
 
 const Header: Component = () => {
