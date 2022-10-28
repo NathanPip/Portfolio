@@ -1,7 +1,7 @@
 import { onMount } from "solid-js";
 
 export const stringContains = (string: string, wordArray: Array<string>) => {
-  for (let word of wordArray) {
+  for (const word of wordArray) {
     if (string.includes(word)) {
       return true;
     }

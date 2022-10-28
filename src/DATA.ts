@@ -24,6 +24,13 @@ interface PortfolioData {
   PROJECTS_DATA: Array<project>
 }
 
+export const twitterKeywordList = [
+  "#100DaysOfCode",
+  "#coding",
+  "#webdevelopment",
+  "#webdev",
+];
+
 const DATA: PortfolioData = {
   SKILLS_DATA: [
     {
