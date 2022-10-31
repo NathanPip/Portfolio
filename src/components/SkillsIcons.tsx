@@ -3,7 +3,7 @@ import { skill } from "../DATA";
 
 const SkillsIcon: Component<{
   skill: skill 
-  changeSkill: Function,
+  changeSkill: any,
   currentSkill: skill,
   skills: Array<skill>
 }> = (props) => {

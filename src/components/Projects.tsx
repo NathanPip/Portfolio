@@ -13,7 +13,7 @@ const Projects: Component<{projects: Array<project>}> = (props) => {
 
   const displayProjects = (filter: string) => {
     let displayed: Array<project> = [];
-    for(let project of props.projects) {
+    for(const project of props.projects) {
       if (project.skills.includes(filter)){
         displayed.push(project);
         continue;

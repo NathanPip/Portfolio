@@ -1,6 +1,5 @@
 import emailjs from "@emailjs/browser";
 import { Component, createSignal } from "solid-js";
-// @ts-ignore
 import { aos } from "../utils/helpers";
 
 const Contact: Component = () => {
