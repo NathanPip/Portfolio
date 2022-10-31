@@ -1,7 +1,7 @@
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Contact from "./Contact";
-// import Socials from "./Socials";
+import Socials from "./Socials";
 
 import DATA from "../DATA";
 
@@ -10,7 +10,7 @@ const Main = () => {
     <div className="main">
       <Projects projects={DATA.PROJECTS_DATA} />
       <Skills skills={DATA.SKILLS_DATA} />
-      {/* <Socials /> */}
+      <Socials />
       <Contact />
     </div>
   );

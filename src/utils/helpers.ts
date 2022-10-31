@@ -1,8 +1,10 @@
 import { onMount } from "solid-js";
 
 export const stringContains = (string: string, wordArray: Array<string>) => {
+  const newString = string.toUpperCase();
   for (let word of wordArray) {
-    if (string.includes(word)) {
+    word = word.toUpperCase();
+    if (newString.includes(word)) {
       return true;
     }
   }
@@ -11,10 +13,9 @@ export const stringContains = (string: string, wordArray: Array<string>) => {
 
 export const aos = (el: HTMLElement, value: any) => {
   onMount(() => {
-    let { name, duration, offset, once } = value();
-    let pos = el.getBoundingClientRect().top + offset;
-
-    addEventListener("scroll", () => {
+    const { name, duration, offset, once } = value();
+    const pos = el.getBoundingClientRect().top + offset;
+    const scrollHandler = () => {
       if (
         window.scrollY + window.innerHeight > pos &&
         !el.classList.contains(name)
@@ -26,8 +27,11 @@ export const aos = (el: HTMLElement, value: any) => {
           el.style.animationDuration = duration;
         }
         el.classList.add(name);
-        console.log(window.scrollY + window.innerHeight + " " + pos);
       }
-    });
+    }
+
+    scrollHandler();
+
+    addEventListener("scroll", () => scrollHandler);
   });
 };
