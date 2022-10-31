@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component, createEffect } from "solid-js";
 import { skill } from "../DATA";
 import { aos } from "../utils/helpers";
 const SkillsCarousel: Component<{

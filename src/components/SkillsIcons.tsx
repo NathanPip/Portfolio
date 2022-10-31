@@ -11,13 +11,13 @@ const SkillsIcon: Component<{
 
   return (
     <div
-      className={`skills__icon`}
+      class={`skills__icon`}
       id={props.skill.id}
       onClick={()=>props.changeSkill(skillIndex - props.skills.indexOf(props.currentSkill), props.currentSkill)}
       style={{"background-color": props.skill.color}}
     >
-    <img className="skills__icon__img" src={`/imgs/${props.skill.id}-logo.svg`} alt={props.skill.id} style={{"background-color": props.skill.color}} />
-    <p className="skills__icon__title">{props.skill.title}</p>
+    <img class="skills__icon__img" src={`/imgs/${props.skill.id}-logo.svg`} alt={props.skill.id} style={{"background-color": props.skill.color}} />
+    <p class="skills__icon__title">{props.skill.title}</p>
     </div>
   );
 }

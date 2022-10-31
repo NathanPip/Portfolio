@@ -7,7 +7,7 @@ import DATA from "../DATA";
 
 const Main = () => {
   return (
-    <div className="main">
+    <div class="main">
       <Projects projects={DATA.PROJECTS_DATA} />
       <Skills skills={DATA.SKILLS_DATA} />
       <Socials />

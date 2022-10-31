@@ -19,7 +19,7 @@ const fetchTweets = async (token: string) => {
     const data = await res.json();
     return data;
   } catch (err: any) {
-    throw new Error(err.message);
+    console.log(err);
   }
 }
 
