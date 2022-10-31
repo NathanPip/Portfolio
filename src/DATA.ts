@@ -29,6 +29,13 @@ export const twitterKeywordList = [
   "#coding",
   "#webdevelopment",
   "#webdev",
+  "Javascript",
+  "SolidJS",
+  "bug",
+  "ecommerce",
+  "ui",
+  "user",
+  "styles"
 ];
 
 const DATA: PortfolioData = {
@@ -37,7 +44,7 @@ const DATA: PortfolioData = {
       id: "html",
       title: "HTML",
       src: "https://img.icons8.com/ios/250/000000/html-5--v2.png",
-      desc: "Knowledge in accessibility and SEO requirements, WCAG principles, and writing clean semantic elements",
+      desc: "Knowledge in accessibility and SEO requirements, WCAG principles, and writing clean, well-organized, semantic elements",
       color: "#f3722c"
     },
     {

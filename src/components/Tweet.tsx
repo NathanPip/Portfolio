@@ -8,7 +8,6 @@ const Tweet: Component<{tweetObject: TweetObj}> = (props) => {
     const AOS = aos;
 
   createEffect(() => {
-    console.log(props.tweetObject)
     if (props.tweetObject.text && textElement !== undefined) {
       textElement.innerHTML = props.tweetObject.text.replace(/\n/g, "<br />");
     }

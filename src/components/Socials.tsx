@@ -1,7 +1,7 @@
 import Tweet from "./Tweet";
 import { stringContains } from "../utils/helpers";
 import { aos } from "../utils/helpers";
-import { createEffect, createMemo, createResource, createSignal, Index } from "solid-js";
+import { createEffect, createResource, createSignal, Index, onMount } from "solid-js";
 import { twitterKeywordList } from "../DATA";
 
 export interface TweetObj {
@@ -17,7 +17,6 @@ const fetchTweets = async (token: string) => {
     });
     const res = await fetch(`/.netlify/functions/getTweets?${token ? newPageUrl : ''}`);
     const data = await res.json();
-    console.log(data);
     return data;
   } catch (err: any) {
     throw new Error(err.message);
@@ -25,9 +24,10 @@ const fetchTweets = async (token: string) => {
 }
 
 export default function Socials() {
-  const [tweets, setTweets] = createSignal<Array<any>>([]);
+  const [tweets, setTweets] = createSignal<Array<TweetObj>>([]);
   const [nextTwitterToken, setNextTwitterToken] = createSignal("");
-  const [data, {mutate, refetch}] = createResource(nextTwitterToken, fetchTweets)
+  const [data] = createResource(nextTwitterToken, fetchTweets)
+  let twitterList: HTMLElement;
   let twitterContainer: HTMLElement;
 
   const AOS = aos;
@@ -38,7 +38,28 @@ export default function Socials() {
     if(data().error) return data().error;
     const filteredTweets: Array<TweetObj> = data().tweets.filter((t: TweetObj) => stringContains(t.text, twitterKeywordList))
     console.log(data());
-    setTweets((prev) => [...prev, ...data().tweets]);
+    setTweets((prev) => [...prev, ...filteredTweets]);
+    if(tweets().length < 10) {
+      setNextTwitterToken(data().nextToken);
+    }
+  })
+
+  onMount(() => {
+    let containerHeight = twitterContainer.getBoundingClientRect().height;
+    let scroll = twitterList.scrollTop;
+    let listHeight = twitterList.scrollHeight;
+    let scrollAmt: number;
+    twitterList.addEventListener("scroll", () => {
+      containerHeight = twitterContainer.getBoundingClientRect().height;
+      scroll = twitterList.scrollTop;
+      listHeight = twitterList.scrollHeight;
+      scrollAmt = scroll + containerHeight;
+      if(scrollAmt >= listHeight-200) {
+        console.log("bigger");
+        console.log(data().nextToken);
+        setNextTwitterToken(data().nextToken);
+      }
+    })
   })
 
   return (
@@ -59,8 +80,8 @@ export default function Socials() {
         Socials
       </h2>
       <div class="socials__body">
-        <div class="socials__twitter">
-          <div class="tweets__list" ref={twitterContainer}>
+        <div class="socials__twitter" ref={twitterContainer}>
+          <div class="tweets__list" ref={twitterList}>
             <Index each={tweets()}>
               {(tweet) => 
                 <Tweet tweetObject={tweet()}></Tweet>
