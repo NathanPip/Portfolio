@@ -20,6 +20,7 @@ export const aos = (el: HTMLElement, value: any) => {
         window.scrollY + window.innerHeight > pos &&
         !el.classList.contains(name)
       ) {
+        console.log("play");
         if (once) {
           el.style.animationFillMode = "forwards";
         }
@@ -32,6 +33,20 @@ export const aos = (el: HTMLElement, value: any) => {
 
     scrollHandler();
 
-    addEventListener("scroll", () => scrollHandler);
+    addEventListener("scroll", () => {
+      if (
+        window.scrollY + window.innerHeight > pos &&
+        !el.classList.contains(name)
+      ) {
+        console.log("play");
+        if (once) {
+          el.style.animationFillMode = "forwards";
+        }
+        if(duration) {
+          el.style.animationDuration = duration;
+        }
+        el.classList.add(name);
+      }
+    });
   });
 };
