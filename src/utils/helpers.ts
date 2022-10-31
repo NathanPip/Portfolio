@@ -11,8 +11,8 @@ export const stringContains = (string: string, wordArray: Array<string>) => {
 
 export const aos = (el: HTMLElement, value: any) => {
   onMount(() => {
-    let { name, duration, offset, once } = value();
-    let pos = el.getBoundingClientRect().top + offset;
+    const { name, duration, offset, once } = value();
+    const pos = el.getBoundingClientRect().top + offset;
 
     addEventListener("scroll", () => {
       if (

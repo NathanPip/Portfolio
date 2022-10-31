@@ -1,69 +1,74 @@
-// import React, { useCallback, useEffect, useRef, useState } from "react";
-// import { AnimationOnScroll } from "react-animation-on-scroll";
-// import useGetTweets from "../Hooks/useGetTweets";
-// import Tweet from "./Tweet";
+import Tweet from "./Tweet";
+import { stringContains } from "../utils/helpers";
+import { aos } from "../utils/helpers";
+import { createEffect, createMemo, createResource, createSignal, Index } from "solid-js";
+import { twitterKeywordList } from "../DATA";
 
-// export default function Socials() {
-//   const [pageNum, setPageNum] = useState(0);
-//   const [tweetElements, setTweetElements] = useState([]);
-//   const { loading, error, tweets } = useGetTweets(pageNum);
-//   const twitterContainer = useRef();
+export interface TweetObj {
+  edit_history_ids: Array<string>;
+  id: string;
+  text: string;
+}
 
-//   const lastTweetObserver = useRef();
-//   const lastTweetObserverHandler = useCallback(
-//     (node) => {
-//       if (loading) return;
-//       if (lastTweetObserver.current) lastTweetObserver.current.disconnect();
-//       lastTweetObserver.current = new IntersectionObserver((entries) => {
-//         if (entries[0].isIntersecting) {
-//           setPageNum((prev) => prev + 1);
-//         }
-//       });
-//       if (node) lastTweetObserver.current.observe(node);
-//     },
-//     [loading]
-//   );
+const fetchTweets = async (token: string) => {
+  try {
+    const newPageUrl = new URLSearchParams({
+      pagination_token: token,
+    });
+    const res = await fetch(`/.netlify/functions/getTweets?${token ? newPageUrl : ''}`);
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
+}
 
-//   useEffect(() => {
-//     if (tweets.length) {
-//       createTweetElements();
-//     }
-//   }, [loading]);
+export default function Socials() {
+  const [tweets, setTweets] = createSignal<Array<any>>([]);
+  const [nextTwitterToken, setNextTwitterToken] = createSignal("");
+  const [data, {mutate, refetch}] = createResource(nextTwitterToken, fetchTweets)
+  let twitterContainer: HTMLElement;
 
+  const AOS = aos;
 
-//   const createTweetElements = () => {
-//     const tweetEls = tweets.map((tweet, index) => {
-//       return (
-//         <div
-//           className="tweet__container"
-//           ref={index === tweets.length - 1 ? lastTweetObserverHandler : null}
-//           key={tweet.id}
-//         >
-//           <Tweet tweetObject={tweet} />
-//         </div>
-//       );
-//     });
-//     setTweetElements(tweetEls);
-//   };
+  createEffect(() => {
+    if(data() === undefined) return;
+    if(data().loading) return;
+    if(data().error) return data().error;
+    const filteredTweets: Array<TweetObj> = data().tweets.filter((t: TweetObj) => stringContains(t.text, twitterKeywordList))
+    console.log(data());
+    setTweets((prev) => [...prev, ...data().tweets]);
+  })
 
-//   return (
-//     <AnimationOnScroll
-//       className="socials"
-//       animateIn="fade-in"
-//       duration={0.5}
-//       offset={200}
-//       animateOnce={true}
-//     >
-//       <h2 id="socials" className="socials__title">
-//         Socials
-//       </h2>
-//       <div className="socials__body">
-//         <div className="socials__twitter">
-//           <div className="tweets__list" ref={twitterContainer}>
-//             {tweetElements}
-//           </div>
-//         </div>
-//       </div>
-//     </AnimationOnScroll>
-//   );
-// }
+  return (
+    <div
+      class="socials"
+      use:AOS={{
+        name: "fade-in",
+        duration: .5,
+        offset: 200,
+        once: true,
+      }}
+      animateIn="fade-in"
+      duration={0.5}
+      offset={200}
+      animateOnce={true}
+    >
+      <h2 id="socials" class="socials__title">
+        Socials
+      </h2>
+      <div class="socials__body">
+        <div class="socials__twitter">
+          <div class="tweets__list" ref={twitterContainer}>
+            <Index each={tweets()}>
+              {(tweet) => 
+                <Tweet tweetObject={tweet()}></Tweet>
+              }
+            </Index>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

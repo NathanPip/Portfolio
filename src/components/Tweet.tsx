@@ -1,51 +1,44 @@
-// import React, { useCallback, useEffect, useRef } from "react";
+import { Component, createEffect } from "solid-js";
+import { TweetObj } from "./Socials";
+import { aos } from "../utils/helpers";
 
-// export default function Tweet(tweetObject) {
-//   const textElement = useRef();
-//   const observer = useRef();
-//   const tweetObserver = useCallback(
-//     (node) => {
-//       if (observer.current) observer.current.disconnect();
-//       observer.current = new IntersectionObserver((entries) => {
-//         if (entries[0].isIntersecting) {
-//           entries[0].target.classList.add("fade-in")
-//         }
-//       });
-//       if (node) observer.current.observe(node);
-//     },
-//     []
-//   );
+const Tweet: Component<{tweetObject: TweetObj}> = (props) => {
+  
+    let textElement: HTMLElement;
+    const AOS = aos;
 
-//   useEffect(() => {
-//     let tweet = tweetObject.tweetObject;
-//     if (tweet) {
-//       textElement.current.innerHTML = tweet.text.replace(/\n/g, "<br />");
-//     }
-//   }, [tweetObject]);
+  createEffect(() => {
+    console.log(props.tweetObject)
+    if (props.tweetObject.text && textElement !== undefined) {
+      textElement.innerHTML = props.tweetObject.text.replace(/\n/g, "<br />");
+    }
+  });
 
 
-//   return (
-//     <div
-//       className="socials__tweet"
-//       ref={tweetObserver}
-//     >
-//       <img
-//         className="tweet__profile__img"
-//         src="/imgs/profile.jpg"
-//         href="https://twitter.com/NathanPiperr"
-//         target="_blank"
-//       ></img>
-//       <h3 className="tweet__username">
-//         <a href="https://twitter.com/NathanPiperr" target="_blank">
-//           Nathan Piper
-//         </a>
-//         <span className="tweet__user__handle">
-//           <a href="https://twitter.com/NathanPiperr" target="_blank">
-//             @NathanPiperr
-//           </a>
-//         </span>
-//       </h3>
-//       <p className="tweet__text" ref={textElement}></p>
-//     </div>
-//   );
-// }
+  return (
+    <div
+      class="socials__tweet"
+      use:AOS={{ name: "fade-in", duration: 0.5, offset: 200, once: true }}
+    >
+      <img
+        class="tweet__profile__img"
+        src="/imgs/profile.jpg"
+        href="https://twitter.com/NathanPiperr"
+        target="_blank"
+      ></img>
+      <h3 class="tweet__username">
+        <a href="https://twitter.com/NathanPiperr" target="_blank">
+          Nathan Piper
+        </a>
+        <span class="tweet__user__handle">
+          <a href="https://twitter.com/NathanPiperr" target="_blank">
+            @NathanPiperr
+          </a>
+        </span>
+      </h3>
+      <p className="tweet__text" ref={textElement}></p>
+    </div>
+  );
+}
+
+export default Tweet;
