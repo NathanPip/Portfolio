@@ -55,8 +55,6 @@ export default function Socials() {
       listHeight = twitterList.scrollHeight;
       scrollAmt = scroll + containerHeight;
       if(scrollAmt >= listHeight-200) {
-        console.log("bigger");
-        console.log(data().nextToken);
         setNextTwitterToken(data().nextToken);
       }
     })

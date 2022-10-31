@@ -1,7 +1,6 @@
 export interface skill {
   id: string;
   title: string;
-  src: string;
   desc: string;
   color: string;
 }
@@ -43,73 +42,75 @@ const DATA: PortfolioData = {
     {
       id: "html",
       title: "HTML",
-      src: "https://img.icons8.com/ios/250/000000/html-5--v2.png",
       desc: "Knowledge in accessibility and SEO requirements, WCAG principles, and writing clean, well-organized, semantic elements",
       color: "#f3722c"
     },
     {
       id: "css",
       title: "CSS",
-      src: "https://img.icons8.com/ios/250/000000/css3.png",
       desc: "a deep understanding of the box-model, adept proficiency in using flex-box and grid, and the ability to turn any design into reality",
       color: "#43aa8b"
     },
     {
       id: "js",
       title: "Javascript",
-      src: "https://img.icons8.com/ios/250/000000/javascript--v1.png",
-      desc: "knowledge in es6 syntax, Ajax and async processing, the event loop and general OOP and functional programming concepts",
+      desc: "Deep knowledge of es6 syntax, Ajax and async processing, the event loop and general Object-oriented, functional, and procedural programming concepts",
       color: "#f9c74f"
     },
     {
       id: "sass",
       title: "Sass",
-      src: "https://img.icons8.com/ios-filled/250/000000/sass.png",
       desc: "knowledge in all sass concepts including modules, variables, mixins, nesting, and loops",
       color: "#cc6699"
     },
     {
       id: "react",
       title: "React",
-      src: "https://img.icons8.com/wired/256/000000/react.png",
-      desc: "knowledge in everything from routing, to class and functional components, to custom hooks, I can create any UI you could imagine",
+      desc: "knowledge in everything from routing, to custom hooks, to server side rendering",
       color: "#61DBFB"
+    },
+    {
+      id: "solid",
+      title: "SolidJS",
+      desc: "Deep understanding of reactivity in solidjs with experience porting multiple react projects into SolidJS",
+      color: "#446b9e"
+    },
+    {
+      id: "webgl",
+      title: "Three.js",
+      desc: "Understanding of 3D rendering and animating in Three.js and WebGL",
+      color: "#049EF4"
+    },
+    {
+      id: "aframe",
+      title: "Aframe",
+      desc: "Understanding of WebXR and building VR experiences using Aframe and custom components",
+      color: "#EF2D5E"
     },
     {
       id: "node",
       title: "Node",
-      src: "https://img.icons8.com/windows/256/000000/node-js.png",
       desc: "knowledge of the node package manager as well as server-side rendering, view-engines, routing, and building RESTful apis",
       color: "#34ec5c"
     },
     {
-      id: "express",
+      id: "node",
       title: "Express",
-      src: "https://img.icons8.com/windows/256/000000/node-js.png",
       desc: "knowledge in express routing and using express HTTP methods and middlewear",
       color: "#577590"
     },
     // {
     //   id: "sql",
     //   title: "SQL",
-    //   src: "https://img.icons8.com/ios/100/000000/database.png",
     //   desc:
-    //     "knowledge in querying Postgres and MySQL databases using SQL",
+    //     "knowledge in querying Postgres and MySQL databases using raw SQL and a variety of ORMs",
     //   color: "#00758f"
     // },
     {
       id: "git",
       title: "Git",
-      src: "https://img.icons8.com/ios/250/000000/git.png",
       desc: "understanding of version control and git workflows as well as pushing and pulling from remote repositories on github",
       color: "#f94144"
-    },
-    {
-      id: "jira",
-      title: "Jira",
-      src: "https://img.icons8.com/ios/250/000000/jira.png",
-      desc: "understanding of working with jira for project management using kanban boards or other similar project management layouts",
-      color: "#4389f1"
     },
   ],
 

@@ -29,7 +29,7 @@ const SkillsCarousel: Component<{
       <div className="skills__carousel__card__container">
         <div ref={props.ref} className="icon-full fade--in" id={props.skill.id}>
           <div className="icon-img" style={{"background-color": props.skill.color}}>
-            <img src={props.skill.src} alt={props.skill.id} />
+            <img src={`/imgs/${props.skill.id}-logo.svg`} alt={props.skill.id} />
           </div>
           <div className="icon-main">
             <h3 className="skills__card__title"> {props.skill.title} </h3>
