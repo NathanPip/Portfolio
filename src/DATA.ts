@@ -58,15 +58,15 @@ const DATA: PortfolioData = {
       color: "#f9c74f"
     },
     {
-      id: "sass",
-      title: "Sass",
-      desc: "knowledge in all sass concepts including modules, variables, mixins, nesting, and loops",
-      color: "#cc6699"
+      id: "typescript",
+      title: "Typescript",
+      desc: "Understanding of type defintions, interfaces, and generics",
+      color: "#3178C6"
     },
     {
       id: "react",
       title: "React",
-      desc: "knowledge in everything from routing, to custom hooks, to server side rendering",
+      desc: "Knowledge in everything from routing, to custom hooks, to state management, to server side rendering",
       color: "#61DBFB"
     },
     {
@@ -82,34 +82,21 @@ const DATA: PortfolioData = {
       color: "#049EF4"
     },
     {
-      id: "aframe",
-      title: "Aframe",
-      desc: "Understanding of WebXR and building VR experiences using Aframe and custom components",
-      color: "#EF2D5E"
-    },
-    {
       id: "node",
       title: "Node",
-      desc: "knowledge of the node package manager as well as server-side rendering, view-engines, routing, and building RESTful apis",
+      desc: "Knowledge of the node package manager as well as server-side rendering, view-engines, routing, and building RESTful apis",
       color: "#34ec5c"
     },
     {
-      id: "node",
-      title: "Express",
-      desc: "knowledge in express routing and using express HTTP methods and middlewear",
-      color: "#577590"
+      id: "python",
+      title: "Python",
+      desc: "Ability to build a multitude of scripts for web-scraping, ETL, and other data and tooling related applications",
+      color: "#f94144"
     },
-    // {
-    //   id: "sql",
-    //   title: "SQL",
-    //   desc:
-    //     "knowledge in querying Postgres and MySQL databases using raw SQL and a variety of ORMs",
-    //   color: "#00758f"
-    // },
     {
       id: "git",
       title: "Git",
-      desc: "understanding of version control and git workflows as well as pushing and pulling from remote repositories on github",
+      desc: "Understanding of version control and git workflows as well as pushing and pulling from remote repositories on github",
       color: "#f94144"
     },
   ],

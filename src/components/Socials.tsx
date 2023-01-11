@@ -16,6 +16,7 @@ const fetchTweets = async (token: string) => {
       pagination_token: token,
     });
     const res = await fetch(`/.netlify/functions/getTweets?${token ? newPageUrl : ''}`);
+    console.log(res)
     const data = await res.json();
     return data;
   } catch (err: any) {
@@ -27,8 +28,8 @@ export default function Socials() {
   const [tweets, setTweets] = createSignal<Array<TweetObj>>([]);
   const [nextTwitterToken, setNextTwitterToken] = createSignal("");
   const [data] = createResource(nextTwitterToken, fetchTweets)
-  let twitterList: HTMLElement;
-  let twitterContainer: HTMLElement;
+  let twitterList: HTMLElement | undefined;
+  let twitterContainer: HTMLElement | undefined;
 
   const AOS = aos;
 
@@ -45,11 +46,13 @@ export default function Socials() {
   })
 
   onMount(() => {
+    if(twitterList === undefined || twitterContainer === undefined) return;
     let containerHeight = twitterContainer.getBoundingClientRect().height;
     let scroll = twitterList.scrollTop;
     let listHeight = twitterList.scrollHeight;
     let scrollAmt: number;
     twitterList.addEventListener("scroll", () => {
+      if(twitterContainer === undefined || twitterList === undefined) return;
       containerHeight = twitterContainer.getBoundingClientRect().height;
       scroll = twitterList.scrollTop;
       listHeight = twitterList.scrollHeight;
@@ -59,7 +62,7 @@ export default function Socials() {
       }
     })
   })
-
+  return null;
   return (
     <div
       class="socials"
