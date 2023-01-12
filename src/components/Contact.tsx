@@ -35,8 +35,7 @@ const Contact: Component = () => {
             console.log(error.text);
           }
         );
-    } else {
-    }
+    } 
   };
 
   return (
